@@ -1,0 +1,17 @@
+name: GitVersion CheckOut 
+description: Checks out a project and runs GitVersion 
+
+runs: 
+  using: "composite"
+  steps: 
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }} 
+        fetch-depth: 0  
+    - name: Install Gitversion
+      shell: cmd
+      run: dotnet tool install --global GitVersion.Tool
+    - name: Run GitVersion 
+      shell: cmd 
+      run: dotnet-gitversion /output buildserver
