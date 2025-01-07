@@ -10,8 +10,13 @@ runs:
         ref: ${{ github.head_ref }} 
         fetch-depth: 0  
     - name: Install Gitversion
-      shell: cmd
-      run: dotnet tool install --global GitVersion.Tool
+      uses: gittools/actions/gitversion/setup@v3.1.1
+      with:
+        versionSpec: '6.0.x'
+    - name: Determine Version 
+      uses: gittools/actions/gitversion/execute@v3.1.1
+      with:
+        useConfigFile: true
     - name: Run GitVersion 
       shell: cmd 
       run: dotnet-gitversion /output buildserver
