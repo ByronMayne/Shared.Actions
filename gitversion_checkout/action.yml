@@ -17,6 +17,3 @@ runs:
       uses: gittools/actions/gitversion/execute@v3.1.1
       with:
         useConfigFile: true
-    - name: Run GitVersion 
-      shell: cmd 
-      run: dotnet-gitversion /output buildserver
