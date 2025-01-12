@@ -17,3 +17,9 @@ runs:
       uses: gittools/actions/gitversion/execute@v3.1.1
       with:
         useConfigFile: true
+    - name: Set Environment | Version  
+      shell: bash
+      run: echo "Version=${{ env.MajorMinorPatch }}" >> $GITHUB_ENV
+    - name: Set Environment | PackageVersion  
+      shell: bash
+      run: echo "PackageVersion=${{ env.SemVer }}" >> $GITHUB_ENV
